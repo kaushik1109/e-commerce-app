@@ -1,19 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { items } from './Data';
 
-const WrapNavbar = () => {
+const WrapNavbar = ({ setData }) => {
+  const filterByOption = (category) => {
+    const filteredData = items.filter((product) => product.category === category);
+    setData(filteredData);
+  };
+
   return (
     <div className='option-wrap'>
       <div className='wrap-navbar'>Filter By</div>
       <div className='wrap-navbar'>No Filter</div>
-      <div className='wrap-navbar'>Mobile</div>
+      <div className='wrap-navbar' onClick={() => filterByOption('mobile')}>
+        Mobile
+      </div>
       <div className='wrap-navbar'>Laptop</div>
       <div className='wrap-navbar'>Tablet</div>
-      <div className='wrap-navbar'>{">="}29999</div>
-      <div className='wrap-navbar'>{">="}49999</div>
-      <div className='wrap-navbar'>{">="}69999</div>
-      <div className='wrap-navbar'>{">="}89999</div>
+      <div className='wrap-navbar'>{'>='}29999</div>
+      <div className='wrap-navbar'>{'>='}49999</div>
+      <div className='wrap-navbar'>{'>='}69999</div>
+      <div className='wrap-navbar'>{'>='}89999</div>
     </div>
-  )
-}
+  );
+};
 
-export default WrapNavbar
+export default WrapNavbar;

@@ -8,16 +8,18 @@ import Cart from './components/Cart'
 import ProductDetail from './components/ProductDetail'
 import Search from './components/Search'
 import { items } from './components/Data';
+import { useState } from 'react';
 
 function App() {
+  const [data,setData]=useState([...items])
 
   return (
     <>
       <Router>
       <Navbar />
-      <WrapNavbar />
+      <WrapNavbar setData={setData} />
      <Routes>
-      <Route path ='/' element={<Product items={[...items]} />} />
+      <Route path ='/' element={<Product items={data} />} />
       <Route path ='/product/:id' element={<ProductDetail />} />
       <Route path ='/search/:term' element={<Search />} />
       <Route path ='/cart' element={<Cart />} />
